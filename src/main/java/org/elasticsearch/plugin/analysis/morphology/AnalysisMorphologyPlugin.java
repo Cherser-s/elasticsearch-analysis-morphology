@@ -55,9 +55,9 @@ public class AnalysisMorphologyPlugin extends Plugin implements AnalysisPlugin {
     public Map<String, AnalysisModule.AnalysisProvider<TokenFilterFactory>> getTokenFilters() {
         Map<String, AnalysisModule.AnalysisProvider<TokenFilterFactory>> extra = new HashMap<>();
         extra.put("russian_morphology", (indexSettings, environment, name, settings) ->
-                new MorphologyTokenFilterFactory(indexSettings, environment, name, settings, russianLuceneMorphology));
+                new MorphologyTokenFilterFactory(indexSettings, environment, name, russianLuceneMorphology));
         extra.put("english_morphology", (indexSettings, environment, name, settings) ->
-                new MorphologyTokenFilterFactory(indexSettings, environment, name, settings, englishLuceneMorphology));
+                new MorphologyTokenFilterFactory(indexSettings, environment, name, englishLuceneMorphology));
         return extra;
     }
 
@@ -65,9 +65,9 @@ public class AnalysisMorphologyPlugin extends Plugin implements AnalysisPlugin {
     public Map<String, AnalysisModule.AnalysisProvider<AnalyzerProvider<? extends Analyzer>>> getAnalyzers() {
         Map<String, AnalysisModule.AnalysisProvider<AnalyzerProvider<? extends Analyzer>>> extra = new HashMap<>();
         extra.put("russian_morphology", (indexSettings, environment, name, settings) ->
-                new MorphologyAnalyzerProvider(environment, name, settings, russianLuceneMorphology));
+                new MorphologyAnalyzerProvider(environment, name, russianLuceneMorphology));
         extra.put("english_morphology", (indexSettings, environment, name, settings) ->
-                new MorphologyAnalyzerProvider(environment, name, settings, englishLuceneMorphology));
+                new MorphologyAnalyzerProvider(environment, name, englishLuceneMorphology));
         return extra;
     }
 
